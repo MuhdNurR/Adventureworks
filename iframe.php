@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Adventureworks ETL</title>
+  <title>Adventureworks</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,18 +14,28 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 </head>
 
-<body class="hold-transition layout-top-nav">
+<body class="hold-transition layout-fixed" data-panel-auto-height-mode="height">
   <div class="wrapper">
 
     <?php include "side-bar.php" ?>
-
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <iframe name="mondrian" src="http://localhost:8080/mondrian/testpage.jsp?query=Measure1" style="width:100%; height:-webkit-fill-available"></iframe>
-    </div>
-    <!-- /.content-wrapper -->
+    <div class="content-wrapper pt-3">
+      <div class="col-lg-12">
+        <div class="card">
+          <iframe name="mondrian" src="http://localhost:8080/mondrian/testpage.jsp?query=Measure1" class="vh-100"></iframe>
+        </div>
+      </div>
+    </div> <!-- /.content-wrapper -->
     <footer class="main-footer">
       <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
       All rights reserved.
@@ -41,6 +51,7 @@
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
+
 
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>

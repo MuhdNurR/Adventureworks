@@ -21,7 +21,6 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -29,25 +28,24 @@
 
         <?php include "side-bar.php" ?>
 
-
         <?php
         //data barchart
-        include 'data5.php';
-        include 'data6.php';
+        include 'data.php';
+        include 'data2.php';
 
-        $data5 = json_decode($data5, TRUE);
-        $data6 = json_decode($data6, TRUE);
+        $data = json_decode($data, TRUE);
+        $data2 = json_decode($data2, TRUE);
+
         ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper pt-3">
             <div class="col-lg-12">
                 <div class="card" style="place-items:center!important;">
-                    <div id="container" class="grafik" style="width:95%"></div>
+                    <div id="barchart" class="grafik" width="100%"></div>
                 </div>
             </div>
         </div>
-
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -65,62 +63,70 @@
     </div>
     <!-- ./wrapper -->
     <script type="text/javascript">
-        // Create linechart
-        Highcharts.chart('container', {
+        // Create the barchart
+        Highcharts.chart('barchart', {
             chart: {
-                type: 'pie'
+                type: 'column'
             },
             title: {
-                text: 'Data Penjualan Setiap Kategori Pada Tahun 2004 Pada Bulan 1 - 6'
+                text: 'Data Penjualan Menurut Benua'
             },
             subtitle: {
                 text: 'Source: Database Adventureworks'
             },
-
             accessibility: {
                 announceNewData: {
                     enabled: true
-                },
-                point: {
-                    valueSuffix: '%'
                 }
             },
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                title: {
+                    text: 'SubTotal'
+                }
 
+            },
+            legend: {
+                enabled: false
+            },
             plotOptions: {
                 series: {
+                    borderWidth: 0,
                     dataLabels: {
                         enabled: true,
-                        format: '{point.name}: {point.y:.1f}%'
+                        format: '{point.y:.1f}$'
                     }
                 }
             },
 
             tooltip: {
                 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}$</b> of total<br/>'
             },
 
             series: [{
-                name: "Kategori",
+                name: "Negara",
                 colorByPoint: true,
                 data: [
-                    <?php foreach ($data5 as $data) : ?> {
-                            name: '<?= $data["name"]; ?>',
-                            y: <?= $data["y"]; ?>,
-                            drilldown: '<?= $data["name"]; ?>'
+                    <?php foreach ($data as $data) : ?> {
+                            name: '<?= $data["contingen"]; ?>',
+                            y: <?= $data["SubTotal"]; ?>,
+                            drilldown: '<?= $data["contingen"]; ?>'
                         },
                     <?php endforeach; ?>
                 ]
             }],
             drilldown: {
                 series: [
-                    <?php for ($i = 0; $i < count($data6); $i += 6) : ?> {
-                            name: "<?= $data6[$i]["kategori"]; ?>",
-                            id: "<?= $data6[$i]["kategori"]; ?>",
+                    <?php for ($i = 0; $i < count($data2); $i += 4) : ?> {
+                            name: "<?= $data2[$i]["Grup"]; ?>",
+                            id: "<?= $data2[$i]["Grup"]; ?>",
                             data: [
-                                <?php for ($a = $i; $a < $i + 6; $a++) : ?>[
-                                        "<?= $data6[$a]["bulan"]; ?>",
-                                        <?= floatval($data6[$a]["persen"]); ?>
+                                <?php for ($a = $i; $a < $i + 4; $a++) : ?>[
+                                        "<?= $data2[$a]["tahun"]; ?>",
+                                        <?= floatval($data2[$a]["SubTotal"]); ?>
                                     ],
                                 <?php endfor; ?>
                             ]
@@ -130,7 +136,6 @@
             }
         });
     </script>
-
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>

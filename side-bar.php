@@ -45,6 +45,14 @@
         <nav class="">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
+                    <a href="ChartBarSales.php" class="nav-link">
+                        <i class="nav-icon fas fa-columns"></i>
+                        <p>
+                            Bar Chart Penjualan Per Benua
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="chartLineSales.php" class="nav-link">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
@@ -68,7 +76,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">MISCELLANEOUS</li>
+                <li class="nav-item">
+                    <a href="chartBarFright.php" class="nav-link">
+                        <i class="nav-icon fas fa-columns"></i>
+                        <p>
+                            Bar Chart Biaya Pengiriman
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="iframe.php" class="nav-link">
                         <i class="nav-icon fas fa-ellipsis-h"></i>

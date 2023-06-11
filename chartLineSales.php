@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Tabbed IFrames</title>
+    <title>Adventureworks</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Custom styles for this template-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.3/css/sb-admin-2.min.css" rel="stylesheet">
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -23,7 +21,6 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -70,7 +67,7 @@
                 type: 'line'
             },
             title: {
-                text: 'Data Penjualan Tiap Negara Pada Tahun 2001 - 2004'
+                text: 'Data Penjualan Tiap Benua Pada Tahun 2001 - 2004'
             },
             subtitle: {
                 text: 'Source: Database Adventureworks'
@@ -83,7 +80,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Banyaknya sewa'
+                    text: 'Banyaknya Penjualan'
                 }
             },
             plotOptions: {

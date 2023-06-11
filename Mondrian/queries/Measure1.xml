@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Schema name="adventureworks">
+    <!-- Shared dimensions -->
+
+    <!-- Sales -->
+    <Cube name="Jual" defaultMeasure="Sales">
+        <Table name="fact_sales"/>
+        
+        <Dimension name="time" foreignKey="time_id">
+            <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="Time_id">
+                <Table name="time"/>
+                <Level name="Year" column="tahun" type="Numeric" uniqueMembers="true"
+                    levelType="TimeYears"/>
+                <Level name="Month" column="bulan" uniqueMembers="false" type="Numeric"
+                    levelType="TimeMonths"/>
+                <Level name="Date" column="tanggal" uniqueMembers="false" type="Numeric"
+                    levelType="TimeDays"/>
+            </Hierarchy>
+        </Dimension>
+        
+        <Dimension name="territory" foreignKey="TerritoryID">
+            <Hierarchy hasAll="true" allMemberName="All Territory" primaryKey="TerritoryID">
+                <Table name="territory"/>
+                <Level name="TerritoryGroup" column="Group"/>
+                <Level name="TerritoryName" column="Name"/>
+            </Hierarchy>
+        </Dimension>
+            
+        <Dimension name="reason" foreignKey="SalesReasonID">
+            <Hierarchy hasAll="true" allMemberName="All Reasons" primaryKey="SalesReasonID">
+                <Table name="reason"/>
+                <Level name="SalesReason" column="SalesReason"/>
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="product" foreignKey="ProductID">
+            <Hierarchy hasAll="true" allMemberName="All Products" primaryKey="ProductID">
+                <Table name="product"/>                
+                <Level name="Category" column="ProductCategory"/>
+                <Level name="Product Name" column="Name"/>
+            </Hierarchy>
+        </Dimension>
+        
+        <Measure name="SubTotal" column="SubTotal" aggregator="sum" formatString="Standard"/>
+        <Measure name="Freight" column="Freight" aggregator="sum" formatString="Standard"/>
+    </Cube>
+</Schema>
