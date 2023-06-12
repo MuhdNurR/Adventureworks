@@ -7,30 +7,40 @@
   <title>Adventureworks</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="extension/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="extension/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="extension/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="extension/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="extension/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="extension/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="extension/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-    <?php include "side-bar.php" ?>
+    <?php
+    include "side-bar.php";
+    require "datadashboard.php";
+
+
+    $data1 = json_decode($data1, TRUE);
+    $data2 = json_decode($data2, TRUE);
+    $data3 = json_decode($data3, TRUE);
+
+    ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -43,7 +53,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>10</h3>
+                  <h3><?php echo $data2[0]["SalesReason"]; ?></h3>
 
                   <p>Orders Reason</p>
                 </div>
@@ -58,7 +68,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>64157956.56$</h3>
+                  <h3><?php echo $data1[0]["TotalSubTotal"]; ?>$</h3>
                   <p>Penjualan</p>
                 </div>
                 <div class="icon">
@@ -72,7 +82,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>2001 - 2014</h3>
+                  <h3><?php echo $data1[0]["MinTahun"]; ?> - <?php echo $data1[0]["MaxTahun"]; ?></h3>
 
                   <p>AdventureworksData</p>
                 </div>
@@ -87,8 +97,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>3</h3>
-
+                  <h3><?php echo $data3[0]["Group"]; ?></h3>
                   <p>Continent</p>
                 </div>
                 <div class="icon">
@@ -141,35 +150,35 @@
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
-
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+  <script src="extension/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="extension/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
   <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="extension/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
+  <script src="extension/chart.js/Chart.min.js"></script>
   <!-- Sparkline -->
-  <script src="plugins/sparklines/sparkline.js"></script>
+  <script src="extension/sparklines/sparkline.js"></script>
   <!-- JQVMap -->
-  <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <script src="extension/jqvmap/jquery.vmap.min.js"></script>
+  <script src="extension/jqvmap/maps/jquery.vmap.usa.js"></script>
   <!-- jQuery Knob Chart -->
-  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+  <script src="extension/jquery-knob/jquery.knob.min.js"></script>
   <!-- daterangepicker -->
-  <script src="plugins/moment/moment.min.js"></script>
-  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="extension/moment/moment.min.js"></script>
+  <script src="extension/daterangepicker/daterangepicker.js"></script>
   <!-- Tempusdominus Bootstrap 4 -->
-  <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="extension/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="extension/summernote/summernote-bs4.min.js"></script>
   <!-- overlayScrollbars -->
-  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="extension/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.js"></script>
   <!-- AdminLTE for demo purposes -->
